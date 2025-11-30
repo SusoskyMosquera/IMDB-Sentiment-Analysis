@@ -1,55 +1,68 @@
-# Proyecto de Análisis de Sentimientos IMDB
+# IMDB Sentiment Analysis Project
 
-Este proyecto implementa un sistema de análisis de sentimientos para reseñas de películas utilizando Redes Neuronales Recurrentes (RNNs), específicamente arquitecturas LSTM y GRU. Además, proporciona una interfaz web interactiva desarrollada con FastAPI.
+This project implements a sentiment analysis system for movie reviews using Recurrent Neural Networks (RNNs), specifically LSTM and GRU architectures. Additionally, it provides an interactive web interface developed with FastAPI.
 
-## Configuración
+## Setup
 
-1.  **Instalar Dependencias:**
+1.  **Install Dependencies:**
+
     ```bash
     pip install -r requirements.txt
     ```
 
-2.  **Datos:**
-    Asegúrate de que la carpeta `aclImdb` esté en el directorio raíz. Debe contener las carpetas `train` y `test`, así como el archivo `imdb.vocab`.
+2.  **Data:**
+    Ensure the `aclImdb` folder is in the root directory. It must contain the `train` and `test` folders, as well as the `imdb.vocab` file.
 
-## Uso
-Para ejecutar la interfaz web, utiliza el siguiente comando:
+## Usage
+
+To run the web interface, use the following command:
+
 ```bash
 python app.py
 ```
 
-## Re-evaluación de Modelos
-Para re-entrenar los modelos y evaluarlos nuevamente, sigue estos pasos:
+## Model Re-evaluation
 
-### 1. Entrenar los Modelos
-Entrena ambos modelos (LSTM y GRU), compara su rendimiento y guarda el mejor.
+To retrain the models and evaluate them again, follow these steps:
+
+### 1\. Train the Models
+
+Train both models (LSTM and GRU), compare their performance, and save the best one.
+
 ```bash
 python train.py
 ```
-*   Generará el archivo `best_model.keras` y gráficas del historial de entrenamiento.
-*   Guardará los resultados comparativos en `model_comparison.csv`.
 
-### 2. Evaluar el Mejor Modelo
-Ejecuta una evaluación detallada en el conjunto de prueba (Exactitud, Precisión, Recall, F1, Matriz de Confusión).
+  * It will generate the `best_model.keras` file and training history plots.
+  * It will save the comparative results in `model_comparison.csv`.
+
+### 2\. Evaluate the Best Model
+
+Run a detailed evaluation on the test set (Accuracy, Precision, Recall, F1, Confusion Matrix).
+
 ```bash
 python evaluate.py
 ```
-*   Imprimirá las métricas en consola y guardará la matriz de confusión como `confusion_matrix.png`.
-*   Mostrará ejemplos de predicciones correctas e incorrectas.
 
-### 3. Ejecutar la Interfaz Web
-Inicia el servidor FastAPI para usar el modelo de forma interactiva.
+  * It will print the metrics to the console and save the confusion matrix as `confusion_matrix.png`.
+  * It will show examples of correct and incorrect predictions.
+
+### 3\. Run the Web Interface
+
+Start the FastAPI server to use the model interactively.
+
 ```bash
 python app.py
 ```
-*   Abre tu navegador y ve a `http://127.0.0.1:8000`.
-*   Ingresa una reseña de película (en inglés) para ver la predicción del sentimiento.
 
-## Estructura del Proyecto
+  * Open your browser and go to `http://127.0.0.1:8000`.
+  * Enter a movie review (in English) to see the sentiment prediction.
 
-*   `data_loader.py`: Utilidades para cargar los datos de texto y crear la capa de vectorización.
-*   `models.py`: Definición de las arquitecturas de redes neuronales (LSTM y GRU).
-*   `train.py`: Script principal para entrenar los modelos y guardar el mejor.
-*   `evaluate.py`: Script para evaluar el modelo guardado y analizar errores.
-*   `app.py`: Aplicación web con FastAPI.
-*   `requirements.txt`: Lista de dependencias de Python.
+## Project Structure
+
+  * `data_loader.py`: Utilities for loading text data and creating the vectorization layer.
+  * `models.py`: Definition of neural network architectures (LSTM and GRU).
+  * `train.py`: Main script to train the models and save the best one.
+  * `evaluate.py`: Script to evaluate the saved model and analyze errors.
+  * `app.py`: Web application with FastAPI.
+  * `requirements.txt`: List of Python dependencies.
